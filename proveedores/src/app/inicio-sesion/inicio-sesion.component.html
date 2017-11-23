@@ -1,0 +1,61 @@
+<body class="main-container">
+  <section class="container">
+    <div class="row">
+      <div class="col-md-3">
+      </div>
+
+      <div class="col-md-6">
+        <p>Inicio de sesión</p>
+        <br>
+        <div align="center" class="col-md-lg-4">
+          <form (ngSubmit)="login()" #f="ngForm" novalidate>
+
+            <div class="form-group">
+              <h5>Correo electrónico</h5>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-user" aria-hidden="true"></i>
+                </div>
+                <input type="text" class="form-control" name="name" id="name" placeholder="Correo" required/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <h5>Contraseña</h5>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Contraseña" required/>
+              </div>
+            </div>
+            <br>
+            <div>
+              <button class="btn propio" [disabled]="loading"><span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span></button>
+              <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
+              />
+            </div>
+          </form>
+
+          <nav>
+            <br>
+            <button class="btn btn-primary" (click)='redireccionaPagina()'>Recuperar password</button>
+
+          </nav>
+        </div>
+        <br>
+      </div>
+
+      <div class="col-md-3">
+      </div>
+
+    </div>
+
+
+
+  </section>
+  <br>
+  <br>
+  <div class="texto">Consulta nuestro aviso de privacidad en www.gnp.com.mx</div>
+</body>
+

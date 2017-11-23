@@ -1,0 +1,222 @@
+<body class="main-container">
+<div class="container">
+  <div class="row">
+  <p class="centrar"><span class="glyphicon glyphicon-file" aria-hidden="true"></span> Captura de datos</p>
+    <br>
+  </div>
+<form (ngSubmit)= "accionEnviar()" #f="ngForm">
+
+	<div class="styled-select">
+    <div class="row">
+    <div class="col-md-6">
+	<p class="centrar">Linea de negocio:
+	<select name="negocio" id="negocio"[(ngModel)]="gastos.lineaNegocio" #name="ngModel" (change)="cambiaColor($event,'negocio')">
+    <option value="Gastos Médicos">Gastos Médicos</option>
+	<!--  <option value="Vida">Vida</option>
+	  <option value="Autos">Autos</option>
+	  <option value="Daños">Daños</option>-->
+	</select></p>
+    </div>
+      <div class="col-md-3">
+    <p class="centrar">Mes:
+      <select name="mes" id="mes" [(ngModel)]="gastos.mes" #name="ngModel" (change)="cambiaColor($event,'mes')">
+        <option value="01">Enero</option>
+        <option value="02">Febrero</option>
+        <option value="03">Marzo</option>
+        <option value="04">Abril</option>
+        <option value="05">Mayo</option>
+        <option value="06">Junio</option>
+        <option value="07">Julio</option>
+        <option value="08">Agosto</option>
+        <option value="09">Septiembre</option>
+        <option value="10">Octubre</option>
+        <option value="11">Noviembre</option>
+        <option value="12">Diciembre</option>
+      </select></p>
+      </div>
+      <div class="col-md-3">
+    <p class="centrar">Año:
+      <select name="año" id="año" [(ngModel)]="gastos.anio" #name="ngModel" (change)="cambiaColor($event,'año')">
+        <option value="2017">2017</option>
+        <option value="2018">2018</option>
+        <option value="2019">2019</option>
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        <option value="2025">2025</option>
+        <option value="2026">2026</option>
+        <option value="2027">2027</option>
+        <option value="2028">2028</option>
+      </select></p>
+      </div>
+    </div>
+    <br>
+    <div class="row">
+      <div class="col-md-6">
+	<p class="centrar">Tipo de archivo:
+	<select [(ngModel)]="gastos.tipoArchivo" name="formulario" id="formulario"  #name="ngModel" (change)="cambiaColor($event,'formulario')">
+	  <option value="Medicamentos">Medicamentos</option>
+	  <option value="Servicios Auxiliares">Servicios auxiliares</option>
+	  <option value="Insumos Medicos">Hospitales</option>
+	</select></p>
+      </div>
+    </div>
+
+    <br>
+    <table class="tabla" id="tabla">
+    <tr>
+    <th>Adjuntar archivos</th></tr>
+    <tr><td id="columna"><input type="file" accept=".txt, .csv" name="file" id="file" class="inputfile" (change)="fileChangeEvent($event)">
+      <label for="file" id="etiqueta"><span class="glyphicon glyphicon-open" aria-hidden="true"></span></label></td></tr>
+    </table>
+    <input type="text" id="nombrearchivo" hidden>
+    <!--<br><p class="centrar"><input type="submit" class="submit" name="Enviar"></p>-->
+    <br>
+<div class="hola" align="center">
+  <br> <button class="btn btn-primary" (click)="accionEnviar" >Enviar</button>
+</div>
+  </div>
+  </form>
+
+</div>
+<br>
+<br>
+<br>
+<div class="texto">Consulta nuestro aviso de privacidad en www.gnp.com.mx</div>
+</body>
+
+
+<!--
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+
+      <script type="text/javascript">
+
+          var myapp = angular.module('testApp', []);
+          myapp.controller("mainCtrl", function($scope, $http) {
+              $scope.passdata = function() {
+                  var Negocio=document.getElementById("negocio").value;
+                   var Formulario=document.getElementById("formulario").value;
+                   var Mes=document.getElementById("mes").value;
+                   var Archivo = $scope.archivo;
+
+
+                  console.log(Negocio);
+                  console.log(Formulario);
+                  console.log(Mes);
+                  var payload = new FormData();
+                  payload.append("lineaNegocio", Negocio);
+                  payload.append("tipoArchivo", Formulario);
+                  payload.append("anio", Año);
+                  payload.append("mes", Mes);
+                  payload.append("archivo",Archivo);
+
+                  var r = $http.post('https://backend-dot-gnp-fuentes-ext-proveedores.appspot.com', payload, {transformRequest: angular.identity, headers: {'Content-Type': undefined}});
+
+
+                  r.then(function() {
+                      $scope.limpiar();
+                  });
+
+
+              }
+
+
+              $scope.limpiar = function() {
+
+
+                  document.getElementById("Negocio").value="";
+                  document.getElementById("Formulario").value="";
+                  document.getElementById("Mes").value="";
+                  $scope.archivo = "";
+                  location.reload();
+
+              }
+
+          });
+          myapp.directive("fileread", [function () {
+      return {
+          scope: {
+              fileread: "="
+          },
+          link: function (scope, element, attributes) {
+              element.bind("change", function (changeEvent) {
+                  scope.$apply(function () {
+                      scope.fileread = changeEvent.target.files[0];
+                      // or all selected files:
+                      // scope.fileread = changeEvent.target.files;
+                  });
+              });
+          }
+      }
+  }]);
+
+      var meses;
+      meses=new Array ("01","02","03","04","05","06","07","08","09","10","11","12");
+      var newDate = new Date();
+
+      var fecha= newDate.getDate() + "/" + meses[newDate.getMonth()]+ "/" + newDate.getFullYear();
+      document.getElementById("Fecha").value=fecha;
+
+
+
+  function passdata(){
+
+   var Negocio=document.getElementById("Negocio").value;
+   var Formulario=document.getElementById("Formulario").value;
+   var Mes=document.getElementById("Mes").value;
+   var Archivo = $("#fileToUpload").val();
+
+  console.log(Negocio);
+  console.log(Formulario);
+  console.log(Mes);
+  console.log(Archivo);
+  var payload = new FormData();
+  payload.append("lineaNegocio", Negocio);
+  payload.append("tipoArchivo", Formulario);
+  payload.append("anio", Mes);
+  payload.append("mes", Mes);
+  payload.append("archivo",Archivo);
+
+  }
+
+
+
+
+  $(window).on("load", function(){
+
+  $(function() {
+  $('#file-input').change(function(e) {
+   addImage(e);
+     });
+
+   function addImage(e){
+    var file = e.target.files[0],
+    imageType = /image.*/;
+
+    if (!file.type.match(imageType))
+    return;
+
+     var reader = new FileReader();
+     reader.onload = fileOnload;
+     reader.readAsDataURL(file);
+     }
+
+   function fileOnload(e) {
+   var result=e.target.result;
+    $('#imgSalida').attr("src",result);
+       }
+      });
+    });
+
+  $(document).ready(function() {
+  /* En el change del campo file, cambiamos el val del campo ficticio por el del verdadero */
+  $('#file-input').change(function(){
+  $('#url-archivo').val($(this).val());
+  });
+  });
+
+  </script>
+  -->
+
