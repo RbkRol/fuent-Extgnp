@@ -14,7 +14,7 @@ export class GastosMedicosService {
   constructor(private http: HttpClient) { }
 
   public enviarInforme(gasto: GastosMedicos): Observable<any> {
-    return this.http.post('https://private-7fb61-gmm.apiary-mock.com/gastosMedicos',
+    return this.http.post('https://backend-dot-gnp-fuentes-ext-proveedores.appspot.com',
       JSON.stringify(gasto),
       httpOptions).pipe();
   }

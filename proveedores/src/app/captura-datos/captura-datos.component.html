@@ -11,7 +11,7 @@
     <div class="col-md-6">
 	<p class="centrar">Linea de negocio:
 	<select name="negocio" id="negocio"[(ngModel)]="gastos.lineaNegocio" #name="ngModel" (change)="cambiaColor($event,'negocio')">
-    <option value="Gastos Médicos">Gastos Médicos</option>
+    <option value="gmm_lp">Gastos Médicos</option>
 	<!--  <option value="Vida">Vida</option>
 	  <option value="Autos">Autos</option>
 	  <option value="Daños">Daños</option>-->
@@ -57,9 +57,9 @@
       <div class="col-md-6">
 	<p class="centrar">Tipo de archivo:
 	<select [(ngModel)]="gastos.tipoArchivo" name="formulario" id="formulario"  #name="ngModel" (change)="cambiaColor($event,'formulario')">
-	  <option value="Medicamentos">Medicamentos</option>
-	  <option value="Servicios Auxiliares">Servicios auxiliares</option>
-	  <option value="Insumos Medicos">Hospitales</option>
+	  <option value="medicamentos">Medicamentos</option>
+	  <option value="servicios_auxiliares">Servicios auxiliares</option>
+	  <option value="insumos_medicos">Hospitales</option>
 	</select></p>
       </div>
     </div>

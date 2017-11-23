@@ -53,12 +53,18 @@ export class CapturaDatosComponent implements OnInit {
   }
 
   accionEnviar() {
+
     let files=fileInput.files[0];
     let archivoPromise=this.getFileBlob(files);
     archivoPromise.then(blob=>{
       this.gastos.archivo=blob;
+      console.log(this.gastos.lineaNegocio);
+      console.log(this.gastos.mes);
+      console.log(this.gastos.anio);
+      console.log(this.gastos.tipoArchivo);
+      console.log(this.gastos.archivo);
       this.gastoServicio.enviarInforme(this.gastos).subscribe((respuesta) => {
-       // console.log(respuesta);
+        console.log(respuesta);
         if (respuesta) {
           // Aqui se va a llamar al pop-up de confirmación de informe enviado
           //enviarInforme();
@@ -67,7 +73,7 @@ export class CapturaDatosComponent implements OnInit {
 
         }
       });
-      console.log(this.gastos.archivo);
+      //console.log(this.gastos.archivo);
     });
   }
 
